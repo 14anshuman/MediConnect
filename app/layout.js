@@ -1,6 +1,10 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/Header";
+import {dark} from "@clerk/themes"
+import { ClerkProvider } from "@clerk/nextjs";
+
 
 
 
@@ -13,11 +17,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider appearance={{
+      baseTheme:dark
+    }}>
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.className}`}
       >
         {/* Header */}
+        <Header/>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -34,9 +42,10 @@ export default function RootLayout({ children }) {
           </footer>
         </ThemeProvider>
 
-        {/* Footer */}
+        
 
       </body>
     </html>
+    </ClerkProvider>
   );
 }

@@ -32,6 +32,7 @@ const Header = async() => {
             <div className='flex items-center space-x-2'>
                 <SignedIn>
             {/* Admin Links */}
+            
             {user?.role === "ADMIN" && (
               <Link href="/admin">
                 <Button
